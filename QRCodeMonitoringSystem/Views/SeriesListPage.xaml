@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:QRCodeMonitoringSystem.ViewModels"
+             xmlns:model="clr-namespace:QRCodeMonitoringSystem.Models"
+             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+             x:DataType="local:ItemsViewModel"
+             x:Class="QRCodeMonitoringSystem.Views.SeriesListPage"
+             Title="Registered Series Collection">
+    <ScrollView>
+
+        <StackLayout>
+            <dxcv:DXCollectionView 
+                Margin="20"
+                ItemSpacing="20"
+                x:Name="ItemsListView" 
+                ItemsSource="{Binding Items}"
+                SelectionMode="None" 
+                IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                <dxcv:DXCollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid x:DataType="model:Item" ColumnDefinitions="Auto,*" RowSpacing="10" ColumnSpacing="10">
+                            <Image Source="search" Grid.Column="0" HeightRequest="60"/>
+                            <VerticalStackLayout Grid.Column="1">
+                                <Label Text="Series Name" 
+                                        LineBreakMode="NoWrap"
+                                        Style="{DynamicResource ListItemTextStyle}"
+                                        FontFamily="Roboto"
+                                        FontSize="Medium"
+                                        TextColor="{StaticResource NormalText}"/>
+                                <Label Text="Series Range [FRX001 - FRX020]"
+                                        LineBreakMode="NoWrap"
+                                        Style="{DynamicResource ListItemDetailTextStyle}"
+                                        FontFamily="Roboto"
+                                        FontSize="Subtitle"
+                                        TextColor="{StaticResource NormalLightText}"/>
+                                <Label Text="Count: Series(1), UniqueScan(1), Scan(10)"
+                                        LineBreakMode="NoWrap"
+                                        Style="{DynamicResource ListItemDetailTextStyle}"
+                                        FontFamily="Roboto"
+                                        FontSize="Small"
+                                        TextColor="{StaticResource NormalLightText}"/>
+                                <VerticalStackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                            NumberOfTapsRequired="1"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}"
+                                            CommandParameter="{Binding .}">
+                                    </TapGestureRecognizer>
+                                </VerticalStackLayout.GestureRecognizers>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </dxcv:DXCollectionView.ItemTemplate>
+            </dxcv:DXCollectionView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

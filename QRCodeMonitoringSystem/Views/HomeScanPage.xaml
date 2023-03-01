@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             x:Class="QRCodeMonitoringSystem.Views.HomeScanPage"
+             Title="Input Selection">
+    <ScrollView>
+
+
+        <VerticalStackLayout Margin="20" Spacing="20" 
+                         HorizontalOptions="Center" VerticalOptions="Center">
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" RowSpacing="10" ColumnSpacing="30"
+              HorizontalOptions="Center" 
+              VerticalOptions="Center">
+                <Image Grid.Column="0" Source="qrcode" HeightRequest="100"
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center"/>
+                <Label Grid.Column="0" Grid.Row="1" Text="QRCode Scanning"
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center"/>
+                <Image Grid.Column="1" Source="barcode" HeightRequest="120"/>
+                <Label Grid.Column="1" Grid.Row="1" Text="BarCode Scanning"/>
+            </Grid>
+
+            <dxco:SimpleButton x:Name="StartQRScan"
+                Margin="20" 
+                Text="Start Scanning QR/BarCode"
+                Clicked="StartQRScan_Clicked"/>
+
+            <VerticalStackLayout Margin="20" Spacing="20">
+                <Grid ColumnDefinitions="Auto,*">
+                    <Image Grid.Column="0" Source="pencil" HeightRequest="100"/>
+                    <Label Grid.Column="1" 
+                       VerticalOptions="Center"
+                       Text="Manual input of QR/Barcode number automatically categories as Un-Indentified QR/Barcode"/>
+                </Grid>
+                <dxe:TextEdit LabelText="Manual Input QR/Barcode Number:"/>
+                <dxco:SimpleButton Text="Manual Encoding" Clicked="ManualInput_Clicked"/>
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

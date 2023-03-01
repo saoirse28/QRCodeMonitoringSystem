@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:QRCodeMonitoringSystem.Views"
+       xmlns:effects="clr-namespace:QRCodeMonitoringSystem.Effects"
+       xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+       effects:InitializeEffectsEffect.Init="true"
+       Shell.ItemTemplate="{StaticResource ShellMenuItemTemplate}"
+       Shell.MenuItemTemplate="{StaticResource ShellMenuItemTemplate}"
+       xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+       ios:Page.UseSafeArea="true"
+       x:Class="QRCodeMonitoringSystem.Views.MainPage"
+       FlyoutBackgroundColor="{StaticResource NormalBackgroundColor}"
+       BackgroundColor="#5369A5"
+       x:DataType="local:MainPage">
+
+    <Shell.FlyoutHeader>
+        <Grid Padding="10,30,10,20" ColumnDefinitions="Auto,*" ColumnSpacing="10">
+            <Image Grid.Row="0" Grid.Column="0" Source="ico" HeightRequest="80"/>
+            <Label Grid.Row="0" Grid.Column="1" Text="QR Code Monitoring System" 
+                   LineBreakMode="CharacterWrap"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="Center"
+                   FontSize="Large"/>
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <MenuItem Text="Close" IconImageSource="close" 
+              Clicked="OnCloseClicked"/>
+    
+    <ShellContent Title="Generate QR Code Series" Icon="Create"
+                  ContentTemplate="{DataTemplate local:CreateQRPage}"
+                  Route="QRCodeMonitoringSystem.Views.CreateQRPage"/>
+    
+    <ShellContent Title="Scan QR Code" Icon="scan"
+                  ContentTemplate="{DataTemplate local:HomeScanPage}"
+                  Route="QRCodeMonitoringSystem.Views.HomeScanPage"/>
+
+    <ShellContent Title="Series Collection" Icon="list"
+                  ContentTemplate="{DataTemplate local:SeriesListPage}"
+                  Route="QRCodeMonitoringSystem.Views.SeriesListPage"/>
+
+    <ShellContent Title="Scan Logs" Icon="log"
+                  ContentTemplate="{DataTemplate local:ScanLogPage}"
+                  Route="QRCodeMonitoringSystem.Views.ScanLogPage"/>
+
+    <ShellContent Title="Settings" Icon="setting"
+                  ContentTemplate="{DataTemplate local:SettingPage}"
+                  Route="QRCodeMonitoringSystem.Views.SettingPage"/>
+
+    <ShellContent Title="Acount Us" Icon="contact"
+                  ContentTemplate="{DataTemplate local:ContactPage}"
+                  Route="QRCodeMonitoringSystem.Views.ContactPage"/>
+
+    <ShellContent Title="About Us" Icon="about"
+                  ContentTemplate="{DataTemplate local:AboutPage}"
+                  Route="QRCodeMonitoringSystem.Views.AboutPage"/>
+
+    <MenuItem Text="Logout" IconImageSource="logout" 
+              StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked"/>
+
+    <TabBar>
+        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
+    </TabBar>
+
+    <Shell.FlyoutFooter>
+        <VerticalStackLayout Padding="20" BackgroundColor="{StaticResource NormalBackgroundColor}">
+            <dxco:SimpleButton Text="Exit Application"
+                               FontSize="Small"
+                               TextColor="White"
+                               FontAttributes="Bold"
+                               BackgroundColor="LightCoral"/>
+        </VerticalStackLayout>
+    </Shell.FlyoutFooter>
+</Shell>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             x:Class="QRCodeMonitoringSystem.Views.QRDetailPage"
+             Title="QR Code Details">
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout Padding="20,30,20,20" Spacing="10">
+                <dxe:NumericEdit LabelText="Series Number:"/>
+                <dxe:DateEdit LabelText="Scan Date:"/>
+                <dxe:TimeEdit LabelText="Scan Time:"/>
+                <Label Text="Pre-Define Details:"/>
+                <dxe:TextEdit LabelText="Text Details:"/>
+                <dxe:DateEdit LabelText="Date Details:"/>
+                <dxe:TimeEdit LabelText="Time Details:"/>
+                <Label Text="Additional Custom Details:"/>
+                <dxco:SimpleButton Grid.Column="0" 
+                                   Text="Add Custom Details"
+                                   Clicked="AddCustomDetail_Clicked"/>
+                <dxe:CheckEdit Label="True/False Details"/>
+                <dxe:MultilineEdit LabelText="Paragraph Details" MinLineCount="10"/>
+                <dxe:NumericEdit LabelText="Number Input Details"/>
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                    <dxco:SimpleButton Grid.Column="0" Text="Save"/>
+                    <dxco:SimpleButton Grid.Column="1" Text="Cancel"/>
+                </Grid>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

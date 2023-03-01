@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             x:Class="QRCodeMonitoringSystem.Views.CreateQRPage"
+             Title="Generate QR Code Series">
+    <ScrollView>
+        <VerticalStackLayout Padding="10,30,10,20" Spacing="10">
+            <dxe:CheckEdit Label="Single Series Only"/>
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                <dxe:NumericEdit Grid.Column="0" LabelText="Series Start Form:"/>
+                <dxe:NumericEdit Grid.Column="1" LabelText="Series End To:"/>
+            </Grid>
+            <dxe:DateEdit LabelText="Series Creation Date:"/>
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                <dxe:TimeEdit Grid.Column="0" LabelText="Series Creation Time:"/>
+                <dxe:TextEdit Grid.Column="1" LabelText="Series Prefix:"/>
+            </Grid>
+
+            <dxco:SimpleButton Grid.Column="0" 
+                               Text="Add Custom Details"
+                               Clicked="AddCustomDetail_Clicked"
+                               Margin="0,20,0,10"/>
+            <Label Text="Additional Details:"/>
+            <dxe:TextEdit LabelText="Text Details:"/>
+            <dxe:DateEdit LabelText="Date Details:"/>
+            <dxe:TimeEdit LabelText="Time Details:"/>            
+            <dxe:CheckEdit Label="True/False Details"/>
+            <dxe:MultilineEdit LabelText="Paragraph Details" MinLineCount="10"/>
+            <dxe:NumericEdit LabelText="Number Input Details"/>
+
+            <Label Text="Generate/Create Sinlge or Multiple QR Code and Export into Image/s"/>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                <dxco:SimpleButton Grid.Column="0" Text="Generate"/>
+                <dxco:SimpleButton Grid.Column="1" Text="Cancel"/>
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

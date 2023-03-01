@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
+             x:Class="QRCodeMonitoringSystem.Views.ScanQRPage"
+             Title="Scan QRCode/BarCode">
+    <ContentPage.Content>
+        <FlexLayout Direction="Column" >
+            <Grid RowDefinitions="*,Auto" ColumnDefinitions="*,*" FlexLayout.Grow="1">
+                <zxing:CameraBarcodeReaderView Grid.Row="0" 
+                                               Grid.ColumnSpan="2" 
+                                               Grid.RowSpan="2" 
+                                               x:Name="barcodeView" 
+                                               BarcodesDetected="BarcodeView_BarcodesDetected"/>
+                <Grid Grid.Row="0" 
+                      Grid.ColumnSpan="2"
+                      Grid.RowSpan="2" 
+                      ColumnDefinitions="*" 
+                      Margin="20" Padding="20" Opacity="60" 
+                      BackgroundColor="#50FFFFFF"
+                      IsVisible="{Binding IsStartScan}">
+                    <StackLayout Grid.Column="1" VerticalOptions="Center" Margin="5">
+                        <dxco:SimpleButton Text="{Binding BtnStartScanText}" 
+                                       Grid.Column="0" Clicked="StartScanning_Clicked" 
+                                       BackgroundColor="MediumSeaGreen">
+                        </dxco:SimpleButton>
+                    </StackLayout>
+                </Grid>
+                <dxco:SimpleButton Grid.Row="1" 
+                                   Grid.Column="0" 
+                                   Clicked="TorchButton_Clicked"
+                                   Margin="20,10,10,10"
+                                   IsVisible="{Binding Source={x:Reference barcodeView},Path=IsDetecting}"/>
+                <dxco:SimpleButton Grid.Row="1" 
+                                   Grid.Column="1" 
+                                   Clicked="SwitchCameraButton_Clicked"
+                                   Margin="10,10,20,10"
+                                   IsVisible="{Binding Source={x:Reference barcodeView},Path=IsDetecting}"/>
+            </Grid>
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>
